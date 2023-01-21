@@ -14,7 +14,7 @@ docker run -d \
     -e BACKUPS=true \
     -e STATUS_HTTP_PORT=2458 \
     -e STATUS_HTTP=true \
-    -e DISCORD_WEBHOOK="https://discord.com/api/webhooks/1039157006600249414/wWUk2x7h6cIiBkOVC5LL2FnFkwuQLTIsAq2TmcjE3NbtGBLLbiloId3DJfMGv4k30WyM" \
+    -e DISCORD_WEBHOOK="****" \
     -e VALHEIM_LOG_FILTER_CONTAINS_Spawned="Got character ZDOID from" \
     -e ON_VALHEIM_LOG_FILTER_CONTAINS_Spawned='{ read l; l=${l//*ZDOID from /}; l=${l// :*/}; msg="$l (이)가 스폰했음!"; curl -sfSL -X POST -H "Content-Type: application/json" -d "{\"username\":\"Valheim\",\"content\":\"$msg\"}" "$DISCORD_WEBHOOK"; }'\
     lloesche/valheim-server

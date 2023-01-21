@@ -44,7 +44,7 @@ services:
       - "RCON_PASSWORD=980417"
       - "RCON_PORT=27015"
       - "SERVER_NAME=MiGwangaBYraccoon"
-      - "SERVER_PASSWORD=raccoon0417"
+      - "SERVER_PASSWORD=****"
       - "STEAM_VAC=true"
       - "UDP_PORT=16262"
       - "USE_STEAM=true"
