@@ -1,0 +1,29 @@
+
+docker run -d \
+    --name valheim-server \
+    --cap-add=sys_nice \
+    --stop-timeout 120 \
+    -p 2456-2458:2456-2458/udp \
+    -v $HOME/valheim-server/config:/config \
+    -v $HOME/valheim-server/data:/opt/valheim \
+    -e SERVER_NAME="Raccoon Server" \
+    -e WORLD_NAME="NUGUR island" \
+    -e SERVER_PASS="980417!" \
+    -e TZ="Asia/Seoul" \
+    -e SERVER_PUBLIC=true \
+    -e BACKUPS=true \
+    -e STATUS_HTTP_PORT=2458 \
+    -e STATUS_HTTP=true \
+    -e DISCORD_WEBHOOK="https://discord.com/api/webhooks/1039157006600249414/wWUk2x7h6cIiBkOVC5LL2FnFkwuQLTIsAq2TmcjE3NbtGBLLbiloId3DJfMGv4k30WyM" \
+    -e VALHEIM_LOG_FILTER_CONTAINS_Spawned="Got character ZDOID from" \
+    -e ON_VALHEIM_LOG_FILTER_CONTAINS_Spawned='{ read l; l=${l//*ZDOID from /}; l=${l// :*/}; msg="$l (이)가 스폰했음!"; curl -sfSL -X POST -H "Content-Type: application/json" -d "{\"username\":\"Valheim\",\"content\":\"$msg\"}" "$DISCORD_WEBHOOK"; }'\
+    lloesche/valheim-server
+
+
+
+SERVER_NAME : Raccoon Server
+SERVER_PASS : 980417!
+
+
+
+
