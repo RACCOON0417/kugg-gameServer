@@ -1,0 +1,36 @@
+version: "3.7"
+services:
+  longvinter-server:
+    container_name: longvinter-server
+    image: longvinter-linux-server
+    build: .
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+    ports:
+      - "7777:7777/tcp"
+      - "7777:7777/udp"
+      - "27016:27016/tcp"
+      - "27016:27016/udp"
+    environment:
+      CFG_SERVER_NAME: "[KR]KUGG"
+      CFG_MAX_PLAYERS: "32"
+      CFG_SERVER_MOTD: "Welcome to RACCOON Island!"
+      CFG_PASSWORD: "kugg0417!"
+      CFG_COMMUNITY_WEBSITE: "www.longvinter.com"
+      CFG_ADMIN_STEAM_ID: "76561198406766260"
+      CFG_ENABLE_PVP: "true"
+      CFG_TENT_DECAY: "false"
+      CFG_MAX_TENTS: "2"
+      CFG_GAME_PORT: "7777"
+      CFG_QUERY_PORT: "27016"
+    volumes:
+      - longvinter_data:/data
+    restart: unless-stopped
+
+volumes:
+  longvinter_data:
+    name: longvinter_data
+  
